@@ -1,0 +1,105 @@
+\usepackage{amsmath,amssymb}%数式のヤツ
+\usepackage{amsfonts}%いろんな文字打てるヤツ
+\usepackage{mathtools}%参照してない式番号を表示させないヤツ
+\mathtoolsset{showonlyrefs=ture}
+%\mathtoolsset{showonlyrefs, showmanualtags}
+\usepackage{amsthm}%文中のアルファベットが斜体にならないヤツ
+\usepackage{amsthm}%定理環境を使うヤツ
+\usepackage{bbm}%1の太字にするヤツ $\mathbbm{1}$でよい
+\usepackage{color}%文字に色付けるヤツ
+\usepackage[dvipdfmx]{graphicx}%図の挿入に使うヤツ
+\usepackage{fancybox}%文章に枠付けるヤツ
+\usepackage{braket}%ブラケット書くヤツ
+\usepackage{bm}%太字にするヤツ
+\usepackage{mathrsfs}%花文字使うヤツ
+\usepackage{ascmac}%screenで文章囲むヤツ
+\usepackage{tikz}%図をかくヤツ
+\usepackage{tikz-cd}%可換図式かくヤツ
+\usepackage{comment}%コメントアウトするヤツ
+\usepackage{float}%図表を任意の場所に出力するヤツ 出力するヤツ
+\usepackage{slashed}%\slashedでスラッシュさせるヤツ
+\usepackage{physics}%数式書くの楽になるやつ
+\usepackage{here}% 大文字のHを使用することで好きな位置に図を配置できるヤツ
+\usepackage{enumerate}%高機能番号付き箇条書きのヤツ
+\usepackage[dvipdfmx]{hyperref}%式番号ジャンプするヤツ
+\usepackage{pxjahyper}%しおり・タイトル等の日本語の文字化け防止するヤツ
+\hypersetup{%hyperrefのオプションリスト
+ setpagesize=false,
+ bookmarksnumbered=true,%
+ bookmarksopen=true,%
+ colorlinks=true,%
+ linkcolor=blue,
+ citecolor=red,
+}
+
+\usepackage{makeidx}%$インデックス入れるやつ
+\makeindex%なんか必要らしい
+
+\usetikzlibrary{intersections, calc,arrows}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{math}
+
+\theoremstyle{definition}%定理環境で、アルファベットが斜体にならないヤツ
+\theoremstyle{remark}
+%\newtheorem{theorem}{Theorem}
+\newtheorem{theorem}{定理}[section]%節と定理番号が一致するヤツ
+\newtheorem{axiom}[theorem]{公理}
+\newtheorem{definition}[theorem]{定義}
+\newtheorem{prop}[theorem]{命題}
+\newtheorem{lemma}[theorem]{補題}
+\newtheorem{corollary}[theorem]{系}
+\newtheorem{example}[theorem]{例}
+\newtheorem{remark}[theorem]{注意}
+\newtheorem{yodan}[theorem]{余談}
+\newtheorem{exercise}[theorem]{問題}
+\newtheorem{conjecture}[theorem]{予想}
+\newtheorem{problem}[theorem]{問}
+\newtheorem*{answer}{解答}
+\newtheorem*{sketch}{Sketch of Proof}
+
+% 定義環境の終了に■を付けるための設定
+\newcommand{\defSymbolCustom}{\hfill $\blacksquare$}
+% 環境で縦線を入れるやつ
+\newsavebox{\probbox}
+\newcommand{\EndIt}{}
+
+\newenvironment{thmEnv}[1]{%
+  \renewcommand{\EndIt}{\end{#1}}%
+  \pushQED{\defSymbolCustom}
+  \begin{#1}  \noindent\newline
+  \begin{lrbox}{\probbox}%
+  \addtolength{\linewidth}{-12pt}%
+  \begin{minipage}[t]{\linewidth}%
+}{
+  \end{minipage}
+  \end{lrbox}%
+  \addtolength{\linewidth}{-12pt}%
+  \makebox[\columnwidth]{%
+    \hfill\vrule\hfill
+    \usebox{\probbox}}%
+
+  \popQED\EndIt
+}
+
+\theoremstyle{remark}
+\newtheorem*{SketchOfProof}{Sketch of Proof}
+
+\pagestyle{headings}
+\numberwithin{equation}{section}%式番号見やすくするヤツ
+\newcommand\Hom{\mathop{\mathrm{Hom}}\nolimits}
+%\newcommand\Image{\mathop{\mathrm{Im}}\nolimits}
+%\newcommand\Trace{\mathop{\mathrm{Tr}}\nolimits}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\HH}{\mathbb{H}}
+%\newcommand{\gcd}{\mathrm{gcd}}
+\newcommand{\GL}{\mathrm{GL}}
+\newcommand{\Aut}{\mathrm{Aut}}
+\newcommand{\Map}{\mathrm{Map}}
+\newcommand{\Mor}{\mathrm{Mor}}
+\newcommand{\st}{~\text{s.t.}~}
